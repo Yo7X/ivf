@@ -5,12 +5,12 @@
         <meta charset="utf-8">
 
         <title>Index</title>
-        <link rel="stylesheet" href="main.css" type="text/css">
-        <script src="main.js"></script>
+        <link rel="stylesheet" href="mainn.css" type="text/css">
+        <script src="mainn.js"></script>
 
         <style>
             body {
-                background-image: url("img/IVF pfp.png");
+                background-image: url("img/xx.png");
                 background-size: cover;
             }
         </style>
@@ -18,17 +18,55 @@
     </head>
 
     <body>
+        <!--Side bar-->
+        <button onclick="{invite()}" class="button" style="height: 70px; width: 200px; background-color: rgba(20, 14, 82, 0.582); top: 15px; left: 15px;">Invite</button>
+        <button onclick="{general()}" id="sb01" class="button" style="height: 70px; width: 200px; background-color: rgba(20, 14, 82, 0.582); top: 105px; left: 15px;">General</button>
+        <button onclick="{x(); commands()}" id="sb02" class="button" style="height: 70px; width: 200px; background-color: rgba(20, 14, 82, 0.582); top: 195px; left: 15px;">Commands</button>
+        <button onclick="{privacy()}" id="sb03" class="button" style="height: 70px; width: 200px; background-color: rgba(20, 14, 82, 0.582); top: 290px; left: 15px;">Privacy</button>
+        <button onclick="{x(); about()}" id="sb04" class="button" style="height: 70px; width: 200px; background-color: rgba(20, 14, 82, 0.582); top: 385px; left: 15px;">About us</button>
+        <button onclick="{x(); patch()}" id="sb05" class="button" style="height: 70px; width: 200px; background-color: rgba(20, 14, 82, 0.582); top: 480px; left: 15px; font-size: 30px;">Patch notes</button>
 
-        <center>
-            <div style="opacity: 0%;">s</div>
-            <div style="opacity: 0%;">s</div>
-            <div style="background: rgba(0, 0, 0, 0.849); border: 5px solid white; width: 500px; height: 800px; border-radius: 10%; padding-top: 10px; color: white; font-size: 32px; font-family: cursive;">
-            <div style="font-size: 52px; text-decoration: underline;">Index</div><br> 
-            • <a href="https://top.gg/bot/970014291413565520" target="_blank">Invite idv info</a><br>
-            • <a href="https://www.youtube.com/channel/UCnHHxFU-nYnuKMC7TKnhXqA/videos" target="_blank">My YouTube</a><br>
-            </div>
+        <!--Background -->
+        <div class="deco" style="height: 1000px; width: 235px; background-color: rgba(117, 62, 189, 0.774); top: 0px; left: 0px; border: 2px solid white;"></div>
+        <div class="deco" style="height: 1000px; width: 2000px; background-color: rgba(20, 14, 82, 0.911); top: 0px; left: 240px;"></div>
+
+        <!--Pages-->
+        <div id="generalpage" class="page" style="height: 928px; width: 1670px; top: 1000px; left: 239px;">
+        <div style="text-align: center; font-size: 60px; text-shadow: 2px 2px 8px #b69ff5;">General</div>
+        <div style="text-align: center; font-size: 30px; text-shadow: 2px 2px 8px #b69ff5;">Identity v info is a discord bot that aims to bring some life into idv themed servers.<br>It has quite a few features ranging from purging messages to trivia games.<br>It is still a work in progress but it already has a wide range of features for you all to use. <br>I hope you all find my creation to be useful and brings your server to the next level.
+        </div>
+        </div>
+
+
+        <div id="commandspage" class="page" style="height: 928px; width: 1670px; top: 1000px; left: 239px;">
+        <div style="text-align: center; font-size: 60px; text-shadow: 2px 2px 8px #b69ff5;">Commands</div><br>
+        <div style="text-align: left; font-size: 30px; text-shadow: 2px 2px 8px #b69ff5;">Use vhrlp in discord for a full list</div>
+        </div>
+
+
+        <div id="privacypage" class="page" style="height: 928px; width: 1670px; top: 1000px; left: 239px;">
+        <div style="text-align: center; font-size: 60px; text-shadow: 2px 2px 8px #b69ff5;">Privacy</div><br>
+        <div style="text-align: center; font-size: 30px; text-shadow: 2px 2px 8px #b69ff5;">Identity V info only collects data that it needs to function. <br> If people are using the economy some extra data will be collected so progress can be saved. <br> If you need data erased for any reason contact me via discord dm and i'll remove it.</div>
+        </div>
+
+
+        <div id="aboutpage" class="page" style="height: 928px; width: 1670px; top: 1000px; left: 239px;">
+        <div style="text-align: center; font-size: 60px; text-shadow: 2px 2px 8px #b69ff5;">About</div><br>
+        <div style="text-align: center; font-size: 30px; text-shadow: 2px 2px 8px #b69ff5;">Idv indo was originaly created in 2020 when i was still learning to code weve come a long way</div>
+        </div>
+
+
+        <div id="patchpage" class="page" style="height: 928px; width: 1670px; top: 1000px; left: 239px;">
+        <div style="text-align: center; font-size: 60px; text-shadow: 2px 2px 8px #b69ff5;">Patch</div>
+        </div>
+
+        <!--Warnings-->
+        <div id="Wbuilding" class="warning" style="height: 700px; width: 500px; top: 1000px; left: 800px;">
+        <div style="font-size: 45px;">This page is still under construction</div><br>
+        <div style="font-size: 20px;">I will get more features working soon untill then check out some of the other pages</div><br>
+        <button class="button" onclick="{cls()}" style="background-color: red; position:sticky; border-radius: 10%;">Close</button>
+        </div>
         
-        </center>
     </body>
 
 </html>
