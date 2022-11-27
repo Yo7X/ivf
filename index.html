@@ -21,47 +21,95 @@
         <!--Side bar-->
         <button onclick="{invite()}" class="button" style="height: 70px; width: 200px; background-color: rgba(20, 14, 82, 0.582); top: 15px; left: 15px;">Invite</button>
         <button onclick="{general()}" id="sb01" class="button" style="height: 70px; width: 200px; background-color: rgba(20, 14, 82, 0.582); top: 105px; left: 15px;">General</button>
-        <button onclick="{x(); commands()}" id="sb02" class="button" style="height: 70px; width: 200px; background-color: rgba(20, 14, 82, 0.582); top: 195px; left: 15px;">Commands</button>
+        <button onclick="{commands()}" id="sb02" class="button" style="height: 70px; width: 200px; background-color: rgba(20, 14, 82, 0.582); top: 195px; left: 15px;">Commands</button>
         <button onclick="{privacy()}" id="sb03" class="button" style="height: 70px; width: 200px; background-color: rgba(20, 14, 82, 0.582); top: 290px; left: 15px;">Privacy</button>
         <button onclick="{x(); about()}" id="sb04" class="button" style="height: 70px; width: 200px; background-color: rgba(20, 14, 82, 0.582); top: 385px; left: 15px;">About us</button>
-        <button onclick="{x(); patch()}" id="sb05" class="button" style="height: 70px; width: 200px; background-color: rgba(20, 14, 82, 0.582); top: 480px; left: 15px; font-size: 30px;">Patch notes</button>
+        <button onclick="{patch()}" id="sb05" class="button" style="height: 70px; width: 200px; background-color: rgba(20, 14, 82, 0.582); top: 480px; left: 15px; font-size: 30px;">Patch notes</button>
 
         <!--Background -->
         <div class="deco" style="height: 1000px; width: 235px; background-color: rgba(117, 62, 189, 0.774); top: 0px; left: 0px; border: 2px solid white;"></div>
         <div class="deco" style="height: 1000px; width: 2000px; background-color: rgba(20, 14, 82, 0.911); top: 0px; left: 240px;"></div>
 
         <!--Pages-->
-        <div id="generalpage" class="page" style="height: 928px; width: 1670px; top: 1000px; left: 239px;">
+        <div id="generalpage" class="page" style="height: 928px; width: 1670px; top: -1000px; left: 239px;">
         <div style="text-align: center; font-size: 60px; text-shadow: 2px 2px 8px #b69ff5;">General</div>
         <div style="text-align: center; font-size: 30px; text-shadow: 2px 2px 8px #b69ff5;">Identity v info is a discord bot that aims to bring some life into idv themed servers.<br>It has quite a few features ranging from purging messages to trivia games.<br>It is still a work in progress but it already has a wide range of features for you all to use. <br>I hope you all find my creation to be useful and brings your server to the next level.
         </div>
         </div>
 
 
-        <div id="commandspage" class="page" style="height: 928px; width: 1670px; top: 1000px; left: 239px;">
+        <div id="commandspage" class="page" style="height: 928px; width: 1670px; top: -1000px; left: 239px;">
         <div style="text-align: center; font-size: 60px; text-shadow: 2px 2px 8px #b69ff5;">Commands</div><br>
-        <div style="text-align: left; font-size: 30px; text-shadow: 2px 2px 8px #b69ff5;">Use vhrlp in discord for a full list</div>
+        <div class="invsscroll" style="text-align: center; font-size: 30px; text-shadow: 2px 2px 8px #b69ff5; overflow-y: scroll; overflow-x: hidden; height: 800px;">
+            General<br>
+            vjoke = A random (mostly idv themed) joke<br>
+            vquestion = Answer a random trivia question<br><br>
+            
+            Helpful<br>
+            /purge (1-100) = delete the last 1-100 mesages in a channel<br><br>
+            
+            Identity V<br>
+            vcharacter = list that characters abilities, skins, and lore<br>
+            vhunter list = list of all hunters<br>
+            vsurvivor list = list of all survivors<br>
+            /random-survivor = one random survivor<br>
+            /random-hunter = one random hunter<br><br>
+            
+            Economy<br>
+            vcreatebank = create a bank to track your clues<br>
+            vbal = view your balance<br>
+            vlb = view leaderboards<br>
+            vmatch = earn clues, fragments, and rank points<br>
+        </div>
         </div>
 
 
-        <div id="privacypage" class="page" style="height: 928px; width: 1670px; top: 1000px; left: 239px;">
+        <div id="privacypage" class="page" style="height: 928px; width: 1670px; top: -1000px; left: 239px;">
         <div style="text-align: center; font-size: 60px; text-shadow: 2px 2px 8px #b69ff5;">Privacy</div><br>
-        <div style="text-align: center; font-size: 30px; text-shadow: 2px 2px 8px #b69ff5;">Identity V info only collects data that it needs to function. <br> If people are using the economy some extra data will be collected so progress can be saved. <br> If you need data erased for any reason contact me via discord dm and i'll remove it.</div>
+        <div style="text-align: center; font-size: 30px; text-shadow: 2px 2px 8px #b69ff5;">Identity V info only collects data that it needs to function. <br> If people are using the economy some extra data will be collected so progress can be saved. <br> If you need data erased for any reason contact me via discord dm and i'll remove it. <br><br> I will add a command to let you erase it in the next economy update</div>
         </div>
 
 
-        <div id="aboutpage" class="page" style="height: 928px; width: 1670px; top: 1000px; left: 239px;">
+        <div id="aboutpage" class="page" style="height: 928px; width: 1670px; top: -1000px; left: 239px;">
         <div style="text-align: center; font-size: 60px; text-shadow: 2px 2px 8px #b69ff5;">About</div><br>
-        <div style="text-align: center; font-size: 30px; text-shadow: 2px 2px 8px #b69ff5;">Idv indo was originaly created in 2020 when i was still learning to code weve come a long way</div>
+        <div style="text-align: center; font-size: 30px; text-shadow: 2px 2px 8px #b69ff5;">Idv info was originaly created in 2020 when i was still learning to code weve come a long way</div>
         </div>
 
 
-        <div id="patchpage" class="page" style="height: 928px; width: 1670px; top: 1000px; left: 239px;">
-        <div style="text-align: center; font-size: 60px; text-shadow: 2px 2px 8px #b69ff5;">Patch</div>
+        <div id="patchpage" class="page" style="height: 928px; width: 1670px; top: -10000px; left: 239px;">
+        <div style="text-align: center; font-size: 60px; text-shadow: 2px 2px 8px #b69ff5;">Patch</div><br>
+        <div class="invsscroll" style="text-align: center; font-size: 30px; text-shadow: 2px 2px 8px #b69ff5; overflow-y: scroll; overflow-x: hidden; height: 800px;">
+            <br>
+            Version 0.0.3<br>
+            -Under developement<br><br>
+            Version 0.0.2<br>
+            -Fixed purge command<br>
+            -Improved the economy earn command<br>
+            -Added fragments and echos to the economy<br>
+            -Improved the help nav<br>
+            -Created a trivia command<br>
+            -Removed skins and lore from the information embed for now<br><br>
+            Version 0.0.2<br>
+            -Merged all info commands together into one emebed<br>
+            -Created an economy system using clues<br>
+            -Created a command to track your balance<br>
+            -Created a command to check your balance<br>
+            -Created a command to earn clues<br>
+            -Finished adding all survivor and hunter skins and lore<br>
+            -Created a command to purge messages from a chat channel<br>
+            -Created a command to tell jokes<br>
+            -Listed the bot on top.gg<br><br>
+            Version 0.0.1<br>
+            -Created survivor and hunter info embeds<br>
+            -Created purge command<br>
+            -Started other commands for hunter and survivor skins and lore<br>
+            -Created a help command<br>
+            
+        </div>
         </div>
 
         <!--Warnings-->
-        <div id="Wbuilding" class="warning" style="height: 700px; width: 500px; top: 1000px; left: 800px;">
+        <div id="Wbuilding" class="warning" style="height: 700px; width: 500px; top: -1000px; left: 800px;">
         <div style="font-size: 45px;">This page is still under construction</div><br>
         <div style="font-size: 20px;">I will get more features working soon untill then check out some of the other pages</div><br>
         <button class="button" onclick="{cls()}" style="background-color: red; position:sticky; border-radius: 10%;">Close</button>
