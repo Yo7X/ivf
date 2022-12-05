@@ -17,14 +17,15 @@
 
     </head>
 
-    <body>
+    <body onload="{general()}">
         <!--Side bar-->
         <button onclick="{invite()}" class="button" style="height: 70px; width: 200px; background-color: rgba(20, 14, 82, 0.582); top: 15px; left: 15px;">Invite</button>
         <button onclick="{general()}" id="sb01" class="button" style="height: 70px; width: 200px; background-color: rgba(20, 14, 82, 0.582); top: 105px; left: 15px;">General</button>
         <button onclick="{commands()}" id="sb02" class="button" style="height: 70px; width: 200px; background-color: rgba(20, 14, 82, 0.582); top: 195px; left: 15px;">Commands</button>
         <button onclick="{privacy()}" id="sb03" class="button" style="height: 70px; width: 200px; background-color: rgba(20, 14, 82, 0.582); top: 290px; left: 15px;">Privacy</button>
-        <button onclick="{x(); about()}" id="sb04" class="button" style="height: 70px; width: 200px; background-color: rgba(20, 14, 82, 0.582); top: 385px; left: 15px;">About us</button>
+        <button onclick="{x(); about()}" id="sb04" class="button" style="height: 70px; width: 200px; background-color: rgba(20, 14, 82, 0.582); top: 385px; left: 15px;">About</button>
         <button onclick="{patch()}" id="sb05" class="button" style="height: 70px; width: 200px; background-color: rgba(20, 14, 82, 0.582); top: 480px; left: 15px; font-size: 30px;">Patch notes</button>
+        <button onclick="{more()}" id="sb06" class="button" style="height: 70px; width: 200px; background-color: rgba(20, 14, 82, 0.582); top: 575px; left: 15px;">More</button>
 
         <!--Background -->
         <div class="deco" style="height: 1000px; width: 235px; background-color: rgba(117, 62, 189, 0.774); top: 0px; left: 0px; border: 2px solid white;"></div>
@@ -50,8 +51,8 @@
             
             Identity V<br>
             vcharacter = list that characters abilities, skins, and lore<br>
-            vhunter list = list of all hunters<br>
-            vsurvivor list = list of all survivors<br>
+            /hunter-list = list of all hunters<br>
+            /survivor-list = list of all survivors<br>
             /random-survivor = one random survivor<br>
             /random-hunter = one random hunter<br><br>
             
@@ -72,7 +73,9 @@
 
         <div id="aboutpage" class="page" style="height: 928px; width: 1670px; top: -1000px; left: 239px;">
         <div style="text-align: center; font-size: 60px; text-shadow: 2px 2px 8px #b69ff5;">About</div><br>
-        <div style="text-align: center; font-size: 30px; text-shadow: 2px 2px 8px #b69ff5;">Idv info was originaly created in 2020 when i was still learning to code weve come a long way</div>
+        <div style="text-align: center; font-size: 30px; text-shadow: 2px 2px 8px #b69ff5;">
+            Idv info was originaly created in 2020 when i was still learning to code weve come a long way<br><br>
+        </div>
         </div>
 
 
@@ -80,9 +83,15 @@
         <div style="text-align: center; font-size: 60px; text-shadow: 2px 2px 8px #b69ff5;">Patch</div><br>
         <div class="invsscroll" style="text-align: center; font-size: 30px; text-shadow: 2px 2px 8px #b69ff5; overflow-y: scroll; overflow-x: hidden; height: 800px;">
             <br>
+            Version 0.0.4<br>
+            -Changed most commands to slash commands instead of prefix<br>
+            -Fixed version to be consistent between the bot and webpage<br>
+            -Optimized code (Around 2k useless lines removed)<br>
+            -Created a better info system (Only available on some characters rn)<br>
+            -Created commands for map info<br>
+            -Fixed a storing problem on the webpage<br>
+            -Updated random info<br><br>
             Version 0.0.3<br>
-            -Under developement<br><br>
-            Version 0.0.2<br>
             -Fixed purge command<br>
             -Improved the economy earn command<br>
             -Added fragments and echos to the economy<br>
@@ -107,6 +116,16 @@
             
         </div>
         </div>
+
+
+        <div id="morepage" class="page" style="height: 928px; width: 1670px; top: -1000px; left: 239px;">
+            <div style="text-align: center; font-size: 60px; text-shadow: 2px 2px 8px #b69ff5;">More</div><br>
+            <div style="text-align: center; font-size: 30px; text-shadow: 2px 2px 8px #b69ff5;">
+                Check out my other projects<br><br>
+                <a href="vote.html">Go vote on character placements here</a><br>
+                <a href="content.html">Generate random stuff</a>
+            </div>
+            </div>
 
         <!--Warnings-->
         <div id="Wbuilding" class="warning" style="height: 700px; width: 500px; top: -1000px; left: 800px;">
