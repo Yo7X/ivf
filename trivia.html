@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>xx</title>
+        <link rel="stylesheet" href="main.css" type="text/css">
+    </head>
+    <body>
+        <center>
+            <h1>Identity V trivia</h1>
+            <h3>Created by yo7</h3>
+            <h3><a href="index.html">Back to index</a></h3>
+            <button class="button" style="position:relative; background-color: rgb(129, 15, 139);" onclick="{srt()}">Get question</button><br><br>
+            <div id="question" style="font-size: 33px;">Question</div><br>
+            <button class="button" style="position:relative; background-color: rgb(129, 15, 139);">Answer01</button>
+            <button class="button" style="position:relative; background-color: rgb(129, 15, 139);">Answer02</button>
+            <button class="button" style="position:relative; background-color: rgb(129, 15, 139);">Answer03</button>
+        </center>
+        <script>
+            ar = [`one`, `two`, `three`, `four`, `five`]
+            function srt() {
+                x = Math.floor(Math.random() * 5)
+                console.log(x)
+                console.log(ar[x])
+                document.getElementById('question').innerHTML = ar[x]
+            }
+        </script>
+    </body>
+</html>
