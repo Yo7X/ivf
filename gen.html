@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en-us">
+    <head>
+        <meta type="author" content="yo7">
+        <title>Con</title>
+        <link rel="stylesheet" href="main.css" type="text/css">
+    </head>
+    <body>
+        <center>
+        <h1>Generate a random:</h1>
+        <h3>Hellow world!</h3>
+        <button onclick="{randomS1()}" class="button" style="position: relative; background-color: rgba(113, 58, 185, 0.651);">Survivor</button>
+        <button onclick="{randomS2()}" class="button" style="position: relative; background-color: rgba(113, 58, 185, 0.651);">Survivor team</button>
+        <button onclick="{randomS3()}" class="button" style="position: relative; background-color: rgba(113, 58, 185, 0.651);">Survivor persona</button>
+        
+        <br><br>
+
+        <button onclick="{randomH1()}" class="button" style="position: relative; background-color: rgba(113, 58, 185, 0.651);">Hunter</button>
+        <button onclick="{randomH2()}" class="button" style="position: relative; background-color: rgba(113, 58, 185, 0.651);">Hunter trait</button>
+        <button onclick="{randomH3()}" class="button" style="position: relative; background-color: rgba(113, 58, 185, 0.651);">Hunter persona</button>
+        <button onclick="{randomH4()}" class="button" style="position: relative; background-color: rgba(113, 58, 185, 0.651);">Full hunter set</button>
+        <br><br>
+        <div id="test">empty div</div><br>
+        <a href="index.html">Back to index</a>
+        </center>
+
+        <script>
+            let survivors = [
+            'Lucky guy',
+            `Doctor`, 
+            'Lawyer', 
+            'Thief',
+            `Gardener`,
+            `Magician`,
+            `Explorer`,
+            `Mercenary`,
+            `Coordinator`,
+            `Mechanic`,
+            `Forward`,
+            `Mind's Eye`,
+            `Priestess`,
+            `Perfumer`,
+            `Cowboy`,
+            `Female Dancer`,
+            `Seer`,
+            `Embalmer`,
+            `Prospector`,
+            `Enchantress`,
+            `Wildling`,
+            `Acrobat`,
+            `First Officer`,
+            `Barmaid`,
+            `Postman`,
+            `Grave Keeper`,
+            `Prisoner`,
+            `Entomologist`,
+            `Painter`,
+            `Batter`,
+            `Toy Merchant`,
+            `Patient`,
+            `Psychologist`,
+            `Novelist`,
+            `Little Girl`,
+            `Weeping Clown`,
+            `Professor`,
+            `Antiquarian`
+            ]
+
+
+            function randomS1() {
+            let random = survivors[Math.floor(Math.random() * survivors.length)]
+
+            document.getElementById('test').innerHTML = random
+            }
+
+            function randomS2() {
+            let random = survivors[Math.floor(Math.random() * survivors.length)]
+            let random2 = survivors[Math.floor(Math.random() * survivors.length)]
+            let random3 = survivors[Math.floor(Math.random() * survivors.length)]
+            let random4 = survivors[Math.floor(Math.random() * survivors.length)]
+
+            document.getElementById('test').innerHTML = random + ', ' + random2 + ', ' + random3 + ', ' + random4
+            }
+        </script>
+    </body>
+</html>
