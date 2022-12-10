@@ -1,0 +1,549 @@
+<!DOCTYPE html>
+<html>
+  
+<head>
+    <title id="ti">Slime jump</title>
+
+    <style>
+    html {
+      font-size:22px
+    }
+  
+    body {
+      background-color: rgb(100, 96, 96);
+      background-image: url(images/sj_background.png);
+      color: rgb(255, 255, 255);
+      font-family: cursive;
+      font-style: normal;
+      overflow: hidden;
+    }
+    </style>
+</head>
+<body onload="{srt(); srt2(); srt3();}" onresize="{size()}" id="myBody">
+  <img id="player" src="images/sj_slimeDefault.png" style="width: 100px; height: 100px; position: absolute; top: 150px; left: 100px;">
+  <center>
+  <div id="try" style="position: sticky; font-size: 100px; ">
+    <button onclick="{ag()}" style="font-size: 100px; cursor: pointer">Restart</button>
+  </div>
+  <div id="score"  style="color: black; font-size: 100px; cursor: default; font-family: cursive;">Score <br> 0</div>
+  </center>
+
+  <img id="death_left" src="images/sj_kill.png" style="width: 30px; height: 50px; position: absolute; top: 0px; left: 0px; background-color: rgb(170, 72, 72);">
+  <img id="death_right" src="images/sj_kill.png" style="width: 30px; height: 50px; position: absolute; top: 0px; left: 100px; background-color: rgb(48, 140, 143);">
+
+  <img id="block01_left" src="" style="width: 30px; height: 250px; position: absolute; top: 150px; left: 800px; background-color: black;">
+  <img id="block01_right" src="" style="width: 30px; height: 250px; position: absolute; top: 150px; left: 870px; background-color: black;">
+  <img id="block01_top" src="" style="width: 100px; height: 30px; position: absolute; top: 500px; left: 900px; background-color: black;">
+  <img id="block01_deco" src="images/sj_pillar.png" style="z-index: 1; width: 270px; height: 30px; position: absolute; top: 500px; left: 900px; background-color: red;">
+
+  <img id="block02_left" src="" style="width: 30px; height: 250px; position: absolute; top: 150px; left: 800px; background-color: black;">
+  <img id="block02_right" src="" style="width: 30px; height: 250px; position: absolute; top: 150px; left: 870px; background-color: black;">
+  <img id="block02_top" src="" style="width: 100px; height: 30px; position: absolute; top: 500px; left: 1100px; background-color: black;">
+  <img id="block02_deco" src="images/sj_pillar.png" style="z-index: 1; width: 270px; height: 30px; position: absolute; top: 500px; left: 900px; background-color: red;">
+
+  <img id="block03_left" src="" style="width: 30px; height: 250px; position: absolute; top: 150px; left: 800px; background-color: black;">
+  <img id="block03_right" src="" style="width: 30px; height: 250px; position: absolute; top: 150px; left: 870px; background-color: black;">
+  <img id="block03_top" src="" style="width: 100px; height: 30px; position: absolute; top: 500px; left: 1100px; background-color: black;">
+  <img id="block03_deco" src="images/sj_pillar.png" style="z-index: 1; width: 270px; height: 30px; position: absolute; top: 500px; left: 900px; background-color: red;">
+
+  <img id="block04_left" src="" style="width: 30px; height: 250px; position: absolute; top: 150px; left: 800px; background-color: black;">
+  <img id="block04_right" src="" style="width: 30px; height: 250px; position: absolute; top: 150px; left: 870px; background-color: black;">
+  <img id="block04_top" src="" style="width: 100px; height: 30px; position: absolute; top: 500px; left: 1100px; background-color: black;">
+  <img id="block04_deco" src="images/sj_pillar.png" style="z-index: 1; width: 270px; height: 30px; position: absolute; top: 500px; left: 900px; background-color: red;">
+
+  <img id="block05_left" src="" style="width: 30px; height: 250px; position: absolute; top: 150px; left: 800px; background-color: black;">
+  <img id="block05_right" src="" style="width: 30px; height: 250px; position: absolute; top: 150px; left: 870px; background-color: black;">
+  <img id="block05_top" src="" style="width: 100px; height: 30px; position: absolute; top: 500px; left: 1100px; background-color: black;">
+  <img id="block05_deco" src="images/sj_pillar.png" style="z-index: 1; width: 270px; height: 30px; position: absolute; top: 500px; left: 900px; background-color: red;">
+  <script>
+    move_right = false
+    move_left = false
+    move_down = false
+    jump = false
+
+    stop_right = false
+    stop_left = false
+    stop_down = false
+
+    gameover = false
+
+    reset = 0
+
+    score = 0
+
+    let clock
+    let clock2
+    let clock3
+    let clock4
+
+    function ag() {
+      gameover = false
+      document.getElementById('player').style.left = '100px'
+      document.getElementById('player').style.top = '100px'
+
+      score = 0
+      document.getElementById('score').innerHTML = 'Score <br> ' + score
+      size()
+      size2()
+      size3()
+      size4()
+      size5()
+    }
+
+    function myHitOther(my1,my2){
+      left1   = parseInt(document.getElementById(my1).style.left)
+      right1  = left1 + parseInt(document.getElementById(my1).style.width)
+      top1    = parseInt(document.getElementById(my1).style.top)   
+      bottom1 = top1   + parseInt(document.getElementById(my1).style.height)
+      left2   = parseInt(document.getElementById(my2).style.left)
+      right2  = left2 + parseInt(document.getElementById(my2).style.width)
+      top2    = parseInt(document.getElementById(my2).style.top)   
+      bottom2 = top2   + parseInt(document.getElementById(my2).style.height)
+      if ((right1  >=  left2  ) &&      	   
+      (bottom1 >=  top2   ) &&
+      (left1   <=  right2 ) &&
+      (top1    <=  bottom2) ){
+        return true
+      }
+    }
+
+    function myCheckHit(){
+      if ( myHitOther('player', 'block01_left') ){
+        stop_right = true
+      }
+
+      if ( myHitOther('player', 'block01_right') ){
+        stop_left = true
+      }
+
+      if ( myHitOther('player', 'block01_top') ){
+        stop_down = true
+      }
+      
+      if ( myHitOther('player', 'block02_left') ){
+        stop_right = true
+      }
+
+      if ( myHitOther('player', 'block02_right') ){
+        stop_left = true
+      }
+
+      if ( myHitOther('player', 'block02_top') ){
+        stop_down = true
+      }
+
+      if ( myHitOther('player', 'block03_left') ){
+        stop_right = true
+      }
+
+      if ( myHitOther('player', 'block03_right') ){
+        stop_left = true
+      }
+
+      if ( myHitOther('player', 'block03_top') ){
+        stop_down = true
+      }
+
+      if ( myHitOther('player', 'block04_left') ){
+        stop_right = true
+      }
+
+      if ( myHitOther('player', 'block04_right') ){
+        stop_left = true
+      }
+
+      if ( myHitOther('player', 'block04_top') ){
+        stop_down = true
+      }
+
+      if ( myHitOther('player', 'block05_left') ){
+        stop_right = true
+      }
+
+      if ( myHitOther('player', 'block05_right') ){
+        stop_left = true
+      }
+
+      if ( myHitOther('player', 'block05_top') ){
+        stop_down = true
+      }
+
+      if ( myHitOther('player', 'death_left') ){
+        gameover = true
+      }
+
+      if ( myHitOther('player', 'death_right') ){
+        gameover = true
+      }
+    }
+
+    let myGlobalX = 0
+
+  function srt3() {
+    clearInterval(clock4)
+    clock5 = setInterval(function(){
+      myTemp = '100px 0px'
+      myGlobalX -= 5
+      myTemp =  myGlobalX + 'px 0px'
+      document.getElementById('myBody').style.backgroundPosition = myTemp
+    }, 15)
+    }
+
+    function srt() {
+      size()
+      size2()
+      document.getElementById('try').style = 'position: absolute; top: 0px;'
+
+      clearInterval(clock3)
+      clock3 = setInterval(function() {
+        if (gameover == true) {} else {
+        score = score + 1
+        document.getElementById('score').innerHTML = 'Score <br> ' + score
+        }
+      }, 1000)
+
+      clearInterval(clock)
+      clock = setInterval(function(){
+        document.getElementById('player').src = 'images/sj_slimeDefault.png';
+
+        if (gameover == true) {
+          document.getElementById('try').style = 'position: sticky; font-size: 100px;'
+          if (score > 20) {
+            //Go to level 2
+          }
+        } else if (gameover == false) {
+          document.getElementById('try').style = 'position: sticky; top: 100px; display: none;'
+        }
+
+        if (parseInt(document.getElementById('player').style.top) < floor && stop_down == false && gameover == false) {
+        document.getElementById('player').style.top = parseInt(document.getElementById('player').style.top) + 3 + 'px';
+        document.getElementById('player').src = 'images/sj_slimeJump.png';
+        } else if (stop_down == true) {
+          jump = true
+          document.getElementById('player').style.left = parseInt(document.getElementById('player').style.left) - 2 + 'px';
+        } else {
+          if (gameover == false) {
+          jump = true
+          }
+        }
+
+        if (move_right == true && parseInt(document.getElementById('player').style.left) < right_side && stop_right == false && gameover == false) {
+          document.getElementById('player').style.left = parseInt(document.getElementById('player').style.left) + 10 + 'px';
+          document.getElementById('player').src = 'images/sj_slimeRight.png';
+        } else if (stop_right == true) {
+          document.getElementById('player').style.left = parseInt(document.getElementById('player').style.left) - 10 + 'px';
+        }
+
+        if (move_left == true && parseInt(document.getElementById('player').style.left) > 0 && stop_left == false && gameover == false) {
+          document.getElementById('player').style.left = parseInt(document.getElementById('player').style.left) - 10 + 'px';
+          document.getElementById('player').src = 'images/sj_slimeLeft.png';
+        } 
+
+        if (move_down == true && parseInt(document.getElementById('player').style.top) < floor && stop_down == false && gameover == false) {
+          document.getElementById('player').style.top = parseInt(document.getElementById('player').style.top) + 10 + 'px';
+        }
+
+        stop_right = false
+        stop_left = false
+        stop_down = false
+        myCheckHit()
+      }, 5)
+    }
+
+    cng01 = false
+    cng02 = false
+    cng03 = false
+    cng04 = false
+    cng05 = false
+
+    speed = 30
+
+    function srt2() {
+      clearInterval(clock2)
+      clock2 = setInterval(function(){
+        //console.log('fff')
+        document.getElementById('block01_top').style.left = parseInt(document.getElementById('block01_top').style.left) - 10 + 'px'
+        if (parseInt(document.getElementById('block01_top').style.left) == 0 || parseInt(document.getElementById('block01_top').style.left) < 0 || reset == 0) {
+          x = Math.floor(Math.random() * (1000 - 1) + 1)
+
+          document.getElementById('block01_top').style.left = window.innerWidth + x + 'px'
+          cng01 = true
+
+          if (reset != 0 && gameover == false) {
+          score = score + 10
+          document.getElementById('score').innerHTML = 'Score <br> ' + score
+          }
+        }
+
+        document.getElementById('block02_top').style.left = parseInt(document.getElementById('block02_top').style.left) - 10 + 'px'
+        if (parseInt(document.getElementById('block02_top').style.left) == 0 || parseInt(document.getElementById('block02_top').style.left) < 0 || reset == 0) {
+          x = Math.floor(Math.random() * (1000 - 1) + 1)
+
+          document.getElementById('block02_top').style.left = window.innerWidth + x + 'px'
+          cng02 = true
+
+          if (reset != 0 && gameover == false) {
+          score = score + 10
+          document.getElementById('score').innerHTML = 'Score <br> ' + score
+          }
+        }
+
+        document.getElementById('block03_top').style.left = parseInt(document.getElementById('block03_top').style.left) - 10 + 'px'
+        if (parseInt(document.getElementById('block03_top').style.left) == 0 || parseInt(document.getElementById('block03_top').style.left) < 0 || reset == 0) {
+          x = Math.floor(Math.random() * (1000 - 1) + 1)
+
+          document.getElementById('block03_top').style.left = window.innerWidth + x + 'px'
+          cng03 = true
+
+          if (reset != 0 && gameover == false) {
+          score = score + 10
+          document.getElementById('score').innerHTML = 'Score <br> ' + score
+          }
+        }
+
+        document.getElementById('block04_top').style.left = parseInt(document.getElementById('block04_top').style.left) - 10 + 'px'
+        if (parseInt(document.getElementById('block04_top').style.left) == 0 || parseInt(document.getElementById('block04_top').style.left) < 0 || reset == 0) {
+          x = Math.floor(Math.random() * (1000 - 1) + 1)
+
+          document.getElementById('block04_top').style.left = window.innerWidth + x + 'px'
+          cng04 = true
+
+          if (reset != 0 && gameover == false) {
+          score = score + 10
+          document.getElementById('score').innerHTML = 'Score <br> ' + score
+          }
+        }
+
+        document.getElementById('block05_top').style.left = parseInt(document.getElementById('block05_top').style.left) - 10 + 'px'
+        if (parseInt(document.getElementById('block05_top').style.left) == 0 || parseInt(document.getElementById('block05_top').style.left) < 0 || reset == 0) {
+          x = Math.floor(Math.random() * (1000 - 1) + 1)
+
+          document.getElementById('block05_top').style.left = window.innerWidth + x + 'px'
+          cng05 = true
+
+          if (reset != 0 && gameover == false) {
+          score = score + 10
+          document.getElementById('score').innerHTML = 'Score <br> ' + score
+          }
+        }
+
+        if (score > 200) {
+          speed = 20
+          srt2()
+        } 
+        
+        if (score > 500) {
+          speed = 10
+          srt2()
+        } 
+        
+        if (score > 1000) {
+          speed = 8
+          srt2()
+        } 
+        
+        if (score > 1500) {
+          speed = 5
+          srt2()
+        } 
+        
+        if (score > 2000) {
+          speed = 1
+          srt2()
+        }
+
+        if (score < 200) {
+          speed = 30
+          srt2()
+        }
+
+        reset = 1
+        size()
+        size2()
+        size3()
+        size4()
+        size5()
+      }, speed)
+    }
+
+    function size() {
+      floor = window.innerHeight - 110
+      right_side = window.innerWidth - 110
+
+      x = window.innerHeight - 110
+      x2 = window.innerHeight - 500
+
+      if (cng01 == true) {
+      x3 = Math.floor(Math.random() * (x - x2) + x2)
+      document.getElementById('block01_top').style.top = x3 + 'px'
+      cng01 = false
+      }
+
+      document.getElementById('block01_left').style.top = parseInt(document.getElementById('block01_top').style.top) + 30 +'px'
+      document.getElementById('block01_left').style.left = parseInt(document.getElementById('block01_top').style.left) - 30 + 'px'
+      document.getElementById('block01_left').style.height = floor + 'px'
+
+      document.getElementById('block01_right').style.top = parseInt(document.getElementById('block01_top').style.top) + 30 +'px'
+      document.getElementById('block01_right').style.left = parseInt(document.getElementById('block01_top').style.left) + parseInt(document.getElementById('block01_top').style.width) + 'px'
+      document.getElementById('block01_right').style.height = floor + 'px'
+
+      document.getElementById('block01_deco').style.left = parseInt(document.getElementById('block01_top').style.left) - 30 + 'px'
+      document.getElementById('block01_deco').style.width = parseInt(document.getElementById('block01_top').style.width) + 60 + 'px'
+      document.getElementById('block01_deco').style.top = document.getElementById('block01_top').style.top
+      document.getElementById('block01_deco').style.height = floor + 'px'
+
+      document.getElementById('death_left').style.height = floor + 110 + 'px'
+
+      document.getElementById('death_right').style.left = right_side + 80 + 'px'
+      document.getElementById('death_right').style.height = floor + 110 + 'px'
+    }
+
+    function size2() {
+      floor = window.innerHeight - 110
+      right_side = window.innerWidth - 110
+
+      x = window.innerHeight - 110
+      x2 = window.innerHeight - 500
+
+      if (cng02 == true) {
+      x3 = Math.floor(Math.random() * (x - x2) + x2)
+      document.getElementById('block02_top').style.top = x3 + 'px'
+      cng02 = false
+      }
+
+      document.getElementById('block02_left').style.top = parseInt(document.getElementById('block02_top').style.top) + 30 +'px'
+      document.getElementById('block02_left').style.left = parseInt(document.getElementById('block02_top').style.left) - 30 + 'px'
+      document.getElementById('block02_left').style.height = floor + 'px'
+
+      document.getElementById('block02_right').style.top = parseInt(document.getElementById('block02_top').style.top) + 30 +'px'
+      document.getElementById('block02_right').style.left = parseInt(document.getElementById('block02_top').style.left) + parseInt(document.getElementById('block02_top').style.width) + 'px'
+      document.getElementById('block02_right').style.height = floor + 'px'
+
+      document.getElementById('block02_deco').style.left = parseInt(document.getElementById('block02_top').style.left) - 30 + 'px'
+      document.getElementById('block02_deco').style.width = parseInt(document.getElementById('block02_top').style.width) + 60 + 'px'
+      document.getElementById('block02_deco').style.top = document.getElementById('block02_top').style.top
+      document.getElementById('block02_deco').style.height = floor + 'px'
+    }
+
+    function size3() {
+      floor = window.innerHeight - 110
+      right_side = window.innerWidth - 110
+
+      x = window.innerHeight - 110
+      x2 = window.innerHeight - 500
+
+      if (cng03 == true) {
+      x3 = Math.floor(Math.random() * (x - x2) + x2)
+      document.getElementById('block03_top').style.top = x3 + 'px'
+      cng03 = false
+      }
+
+      document.getElementById('block03_left').style.top = parseInt(document.getElementById('block03_top').style.top) + 30 +'px'
+      document.getElementById('block03_left').style.left = parseInt(document.getElementById('block03_top').style.left) - 30 + 'px'
+      document.getElementById('block03_left').style.height = floor + 'px'
+
+      document.getElementById('block03_right').style.top = parseInt(document.getElementById('block03_top').style.top) + 30 +'px'
+      document.getElementById('block03_right').style.left = parseInt(document.getElementById('block03_top').style.left) + parseInt(document.getElementById('block03_top').style.width) + 'px'
+      document.getElementById('block03_right').style.height = floor + 'px'
+
+      document.getElementById('block03_deco').style.left = parseInt(document.getElementById('block03_top').style.left) - 30 + 'px'
+      document.getElementById('block03_deco').style.width = parseInt(document.getElementById('block03_top').style.width) + 60 + 'px'
+      document.getElementById('block03_deco').style.top = document.getElementById('block03_top').style.top
+      document.getElementById('block03_deco').style.height = floor + 'px'
+    }
+
+    function size4() {
+      floor = window.innerHeight - 110
+      right_side = window.innerWidth - 110
+
+      x = window.innerHeight - 110
+      x2 = window.innerHeight - 500
+
+      if (cng04 == true) {
+      x3 = Math.floor(Math.random() * (x - x2) + x2)
+      document.getElementById('block04_top').style.top = x3 + 'px'
+      cng04 = false
+      }
+
+      document.getElementById('block04_left').style.top = parseInt(document.getElementById('block04_top').style.top) + 30 +'px'
+      document.getElementById('block04_left').style.left = parseInt(document.getElementById('block04_top').style.left) - 30 + 'px'
+      document.getElementById('block04_left').style.height = floor + 'px'
+
+      document.getElementById('block04_right').style.top = parseInt(document.getElementById('block04_top').style.top) + 30 +'px'
+      document.getElementById('block04_right').style.left = parseInt(document.getElementById('block04_top').style.left) + parseInt(document.getElementById('block04_top').style.width) + 'px'
+      document.getElementById('block04_right').style.height = floor + 'px'
+
+      document.getElementById('block04_deco').style.left = parseInt(document.getElementById('block04_top').style.left) - 30 + 'px'
+      document.getElementById('block04_deco').style.width = parseInt(document.getElementById('block04_top').style.width) + 60 + 'px'
+      document.getElementById('block04_deco').style.top = document.getElementById('block04_top').style.top
+      document.getElementById('block04_deco').style.height = floor + 'px'
+    }
+
+    function size5() {
+      floor = window.innerHeight - 110
+      right_side = window.innerWidth - 110
+
+      x = window.innerHeight - 110
+      x2 = window.innerHeight - 500
+
+      if (cng05 == true) {
+      x3 = Math.floor(Math.random() * (x - x2) + x2)
+      document.getElementById('block05_top').style.top = x3 + 'px'
+      cng05 = false
+      }
+
+      document.getElementById('block05_left').style.top = parseInt(document.getElementById('block05_top').style.top) + 30 +'px'
+      document.getElementById('block05_left').style.left = parseInt(document.getElementById('block05_top').style.left) - 30 + 'px'
+      document.getElementById('block05_left').style.height = floor + 'px'
+
+      document.getElementById('block05_right').style.top = parseInt(document.getElementById('block05_top').style.top) + 30 +'px'
+      document.getElementById('block05_right').style.left = parseInt(document.getElementById('block05_top').style.left) + parseInt(document.getElementById('block05_top').style.width) + 'px'
+      document.getElementById('block05_right').style.height = floor + 'px'
+
+      document.getElementById('block05_deco').style.left = parseInt(document.getElementById('block05_top').style.left) - 30 + 'px'
+      document.getElementById('block05_deco').style.width = parseInt(document.getElementById('block05_top').style.width) + 60 + 'px'
+      document.getElementById('block05_deco').style.top = document.getElementById('block05_top').style.top
+      document.getElementById('block05_deco').style.height = floor + 'px'
+    }
+
+    document.addEventListener('keydown', function(e) {
+      if (e.key == 'd' || e.key == 'D') {
+        move_right = true
+      }
+
+      if (e.key == 'a' || e.key == 'A') {
+        move_left = true
+      }
+
+      if (e.key == 's' || e.key == 'S') {
+        move_down = true
+      }
+
+      if (e.keyCode == 32) {
+        if (jump == true) {
+        jump = false
+        document.getElementById('player').style.top = parseInt(document.getElementById('player').style.top) - 500 + 'px';
+        }
+      }
+
+      if (e.key == 'p') {
+        document.getElementById('ti').innerHTML = 'New Tab'
+      }
+    });
+
+    document.addEventListener('keyup', function(e) {
+      if (e.key == 'd' || e.key == 'D') {
+        move_right = false
+      }
+
+      if (e.key == 'a' || e.key == 'A') {
+        move_left = false
+      }
+
+      if (e.key == 's' || e.key == 'S') {
+        move_down = false
+      }
+    });
+  </script>
+</body>
+</html>
