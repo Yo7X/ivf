@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+    <title>TTS</title>
+    <script src="http://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+    <script src='https://code.responsivevoice.org/responsivevoice.js'></script>
+    <style>
+        body {
+            background-color: gray;
+            color: white;
+            font-family: cursive;
+            font-size: 22px;
+        }
+    </style>
+</head>
+<body onload="{cng()}">
+    <center>
+        <h2>TTS</h2>
+    
+    <input onblur="{cng()}" type=text id="myText01" value="" placeholder="Text to read"><br><br>
+
+    <details>
+        <summary>Extra options</summary>
+
+        <input type=text id="myText02" value="" placeholder="Pitch">
+        <input type=text id="myText03" value="" placeholder="Rate">
+        <input type=text id="myText04" value="" placeholder="Volume">
+    </details>
+    
+    <br><br>
+
+    <select id="sel01">
+        <option value="a">US English Female</option> 
+        <option value="b">US English Male</option> 
+        <option value="c">UK English Female</option> 
+        <option value="d">UK English Male</option> 
+    </select>
+
+    <br><br>
+    
+    <div id="google_translate_element">Placeholder</div>
+
+    <br>
+
+    <button onclick="{spk()}">Read</button>
+ </center>
+
+<script>
+    function googleTranslateElementInit() {
+        new google.translate.TranslateElement({pageLanguage: 'en-us', includedLanguages: 'en,fr,de,ru', layout:google.translate.TranslateElement.InlineLayout.SIMPLE, autoDisplay: false}, 'google_translate_element');
+    }
+
+    function cng() {
+        document.getElementById('google_translate_element').innerHTML = document.getElementById('myText01').value
+    }
+
+    document.addEventListener('keydown', function(e){
+        if (e.key == 'Enter') {
+            document.getElementById('google_translate_element').innerHTML = document.getElementById('myText01').value
+        }
+    });
+
+    function spk() {
+        let myVoice
+        choise = document.getElementById('sel01').value
+        cstm01 = document.getElementById('myText02').value
+        cstm02 = document.getElementById('myText03').value
+        cstm03 = document.getElementById('myText04').value
+
+        if (cstm01 == '') {
+            cstm01 = 1
+        }
+        if (cstm02 == '') {
+            cstm02 = 1
+        }
+        if (cstm03 == '') {
+            cstm03 = 1
+        }
+
+        if (choise == 'a') {
+            myVoice = 'US English Female'
+        }
+
+        if (choise == 'b') {
+            myVoice = 'US English Male'
+        }
+
+        if (choise == 'c') {
+            myVoice = 'UK English Female'
+        }
+
+        if (choise == 'd') {
+            myVoice = 'UK English Male'
+        }
+
+        responsiveVoice.speak(document.getElementById('google_translate_element').innerText, myVoice, {pitch: cstm01, rate: cstm02, volume : cstm03})  
+    }
+</script>
+
+</body>
+</html>
