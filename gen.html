@@ -2,13 +2,13 @@
 <html lang="en-us">
     <head>
         <meta type="author" content="yo7">
-        <title>Con</title>
+        <title>rand</title>
         <link rel="stylesheet" href="main.css" type="text/css">
     </head>
     <body>
         <center>
-        <h1>Generate a random:</h1>
-        <h3>Hellow world!</h3>
+        <h1>IDV randomizers</h1>
+        <h3><a href="https://www.youtube.com/channel/UCnHHxFU-nYnuKMC7TKnhXqA">By yo7</a></h3>
         <button onclick="{randomS1()}" class="button" style="position: relative; background-color: rgba(113, 58, 185, 0.651);">Survivor</button>
         <button onclick="{randomS2()}" class="button" style="position: relative; background-color: rgba(113, 58, 185, 0.651);">Survivor team</button>
         <button onclick="{randomS3()}" class="button" style="position: relative; background-color: rgba(113, 58, 185, 0.651);">Survivor persona</button>
@@ -20,8 +20,8 @@
         <button onclick="{randomH3()}" class="button" style="position: relative; background-color: rgba(113, 58, 185, 0.651);">Hunter persona</button>
         <button onclick="{randomH4()}" class="button" style="position: relative; background-color: rgba(113, 58, 185, 0.651);">Full hunter set</button>
         <br><br>
-        <div id="test">empty div</div><br>
-        <a href="index.html">Back to index</a>
+        <div id="test"></div><br>
+        <a href="index.html">Back</a>
         </center>
 
         <script>
@@ -66,6 +66,34 @@
             `Antiquarian`
             ]
 
+            let hunter = [
+                'Hell Ember',
+                `Smiley Face`, 
+                'The Ripper', 
+                'Gamekeeper',
+                `Soul Weaver`,
+                `Geisha`,
+                `Feaster`,
+                `Wu Chang`,
+                `Photographer`,
+                `Mad Eyes`,
+                `Dream Witch`,
+                `Axe Boy`,
+                `Evil Reptilian`,
+                `Bloody Queen`,
+                `Guard 26`,
+                `Disciple`,
+                `Violinist`,
+                `Sculptor`,
+                `Undead`,
+                `Breaking Wheel`,
+                `Naiad`,
+                `Wax Artis`,
+                `Nightmare`,
+                `Clerk`,
+                `Hermit`
+            ];
+
 
             function randomS1() {
             let random = survivors[Math.floor(Math.random() * survivors.length)]
@@ -80,6 +108,45 @@
             let random4 = survivors[Math.floor(Math.random() * survivors.length)]
 
             document.getElementById('test').innerHTML = random + ', ' + random2 + ', ' + random3 + ', ' + random4
+            }
+
+            points = 120
+            twoendcap = 0
+            sum = ''
+
+            flywheeleffect = false
+            borrowedtime = false
+            tideturner = false
+            kneejerkreflex = false
+
+            symbioticeffect = 0
+            compesate = 0
+            heardmentality = 0
+            musclememory = 0
+
+            //you get duplicate traits
+            //you need to cross out traits that a default to other traits 
+
+            function randomS3() {
+                alert(`I'm still working on this one`)
+            }
+
+            function randomH1() {
+            let random = hunter[Math.floor(Math.random() * hunter.length)]
+
+            document.getElementById('test').innerHTML = random
+            }
+
+            function randomH2() {
+                alert(`I'm still working on this one`)
+            }
+
+            function randomH3() {
+                alert(`I'm still working on this one`)
+            }
+
+            function randomH4() {
+                alert(`I'm still working on this one`)
             }
         </script>
     </body>
