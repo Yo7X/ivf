@@ -1,167 +1,141 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="author" content="yo7">
-    <meta name="description" content="Cool tools for idv">
-    <title>Identity V tools</title>
+<!doctype html>
 
-    <link rel="stylesheet" href="main.css" type="text/css">
-    <script src="main.js"></script>
-    <script src="randomizer.js"></script>
-    <script src="tts.js"></script>
-    <script src="trivia.js"></script>
-    <script src="bingo.js"></script>
-    <script src="skin.js"></script>
+<html>
+    <head>
+        <meta charset="utf-8">
 
-    <script src="http://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
-    <script src='https://code.responsivevoice.org/responsivevoice.js'></script>
-</head>
+        <title>Index</title>
+        <link rel="stylesheet" href="main.css" type="text/css">
+        <script src="main.js"></script>
 
-<!--
-    Copy to nest version
+        <style>
+            body {
+                background-image: url("img/IVF pfp.png");
+                background-size: cover;
+            }
+        </style>
 
-    -Index
-    -Skin.js
-    -bingo.js
-    -trivia.js
--->
+    </head>
 
-<body onload="{size(); srt(); cng(); scramble();}" onresize="{size()}">
-    <div id="maindeco01" style="height: 1000px; width: 235px; background-color: rgba(117, 62, 189, 0.774); top: 0px; left: 0px; border: 2px solid white; position: absolute; z-index: 1;">
-        <button id="bt001" onclick="{bt1()}" class="button" style="font-size: 30px; top: 15px; left: 15px;">Randomizers</button>
-        <button id="bt002" onclick="{bt2()}" class="button" style="font-size: 20px; top: 105px; left: 15px;">community tier list</button>
-        <button id="bt003" onclick="{bt3()}" class="button" style="top: 195px; left: 15px;">Trivia</button>
-        <button id="bt004" onclick="{bt4()}" class="button" style="top: 285px; left: 15px;">TTS</button>
-        <button id="bt005" onclick="{bt5()}" class="button" style="top: 375px; left: 15px;">Bingo</button>
-        <button id="bt006" onclick="{bt6()}" class="button" style="font-size: 30px; top: 460px; left: 15px;">Essence pull</button>
-    </div>
+    <body onload="{general()}">
+        <!--Side bar-->
+        <button onclick="{invite()}" class="button" style="height: 70px; width: 200px; background-color: rgba(20, 14, 82, 0.582); top: 15px; left: 15px;">Invite</button>
+        <button onclick="{general()}" id="sb01" class="button" style="height: 70px; width: 200px; background-color: rgba(20, 14, 82, 0.582); top: 105px; left: 15px;">General</button>
+        <button onclick="{commands()}" id="sb02" class="button" style="height: 70px; width: 200px; background-color: rgba(20, 14, 82, 0.582); top: 195px; left: 15px;">Commands</button>
+        <button onclick="{privacy()}" id="sb03" class="button" style="height: 70px; width: 200px; background-color: rgba(20, 14, 82, 0.582); top: 290px; left: 15px;">Privacy</button>
+        <button onclick="{x(); about()}" id="sb04" class="button" style="height: 70px; width: 200px; background-color: rgba(20, 14, 82, 0.582); top: 385px; left: 15px;">About</button>
+        <button onclick="{patch()}" id="sb05" class="button" style="height: 70px; width: 200px; background-color: rgba(20, 14, 82, 0.582); top: 480px; left: 15px; font-size: 30px;">Patch notes</button>
+        <button onclick="{more()}" id="sb06" class="button" style="height: 70px; width: 200px; background-color: rgba(20, 14, 82, 0.582); top: 575px; left: 15px;">More</button>
 
-    <div id="maindeco02" style="height: 1000px; width: 2000px; background-color: rgba(20, 14, 82, 0.911); top: 0px; left: 235px; position: absolute;">
-        <center>
-        <div id="default" style="display: block; ">
-            <h1>Identity V tools</h1>
-            <h3><a href="https://www.youtube.com/channel/UCnHHxFU-nYnuKMC7TKnhXqA">By yo7</a></h3>
-            <p title="7">
-                Please include a link to this site if you use these tools in a video/stream <br> <br>
-                Want to give feedback or share ideas? <br> Join my <a href="https://discord.gg/WqvsKqURPr">discord server</a> ill see if I can add it
-            </p>
+        <!--Background -->
+        <div class="deco" style="height: 1000px; width: 235px; background-color: rgba(117, 62, 189, 0.774); top: 0px; left: 0px; border: 2px solid white;"></div>
+        <div class="deco" style="height: 1000px; width: 2000px; background-color: rgba(20, 14, 82, 0.911); top: 0px; left: 240px;"></div>
+
+        <!--Pages-->
+        <div id="generalpage" class="page" style="height: 928px; width: 1670px; top: -1000px; left: 239px;">
+        <div style="text-align: center; font-size: 60px; text-shadow: 2px 2px 8px #b69ff5;">General</div>
+        <div style="text-align: center; font-size: 30px; text-shadow: 2px 2px 8px #b69ff5;">Identity v info is a discord bot that aims to bring some life into idv themed servers.<br>It has quite a few features ranging from purging messages to trivia games.<br>It is still a work in progress but it already has a wide range of features for you all to use. <br>I hope you all find my creation to be useful and brings your server to the next level.
+        </div>
         </div>
 
-        <div id="pg001" style="display: none;">
-            <h1>IDV randomizers</h1>
-            <button onclick="{randomS1()}" class="button" style="position: relative; background-color: rgba(113, 58, 185, 0.651);">Survivor</button>
-            <button onclick="{randomS2()}" class="button" style="position: relative; background-color: rgba(113, 58, 185, 0.651); font-size: 25px;">Survivor team</button>
-            <button onclick="{randomS3()}" class="button" style="position: relative; background-color: rgba(113, 58, 185, 0.651); font-size: 20px;">Survivor persona</button>
-            <button onclick="{randomS4()}" class="button" style="position: relative; background-color: rgba(113, 58, 185, 0.651); font-size: 20px;">Full survivor set</button>
 
-            <br><br>
-
-            <button onclick="{randomH1()}" class="button" style="position: relative; background-color: rgba(113, 58, 185, 0.651);">Hunter</button>
-            <button onclick="{randomH2()}" class="button" style="position: relative; background-color: rgba(113, 58, 185, 0.651); font-size: 25px;">Hunter trait</button>
-            <button onclick="{randomH3()}" class="button" style="position: relative; background-color: rgba(113, 58, 185, 0.651); font-size: 25px;">Hunter persona</button>
-            <button onclick="{randomH4()}" class="button" style="position: relative; background-color: rgba(113, 58, 185, 0.651); font-size: 25px;">Full hunter set</button>
-
-        <br><br>
-            <div style="font-size: 30px;" id="rndm_result"></div><br>
+        <div id="commandspage" class="page" style="height: 928px; width: 1670px; top: -1000px; left: 239px;">
+        <div style="text-align: center; font-size: 60px; text-shadow: 2px 2px 8px #b69ff5;">Commands</div><br>
+        <div class="invsscroll" style="text-align: center; font-size: 30px; text-shadow: 2px 2px 8px #b69ff5; overflow-y: scroll; overflow-x: hidden; height: 800px;">
+            General<br>
+            vjoke = A random (mostly idv themed) joke<br>
+            vquestion = Answer a random trivia question<br><br>
+            
+            Helpful<br>
+            /purge (1-100) = delete the last 1-100 mesages in a channel<br><br>
+            
+            Identity V<br>
+            vcharacter = list that characters abilities, skins, and lore<br>
+            /hunter-list = list of all hunters<br>
+            /survivor-list = list of all survivors<br>
+            /random-survivor = one random survivor<br>
+            /random-hunter = one random hunter<br><br>
+            
+            Economy<br>
+            vcreatebank = create a bank to track your clues<br>
+            vbal = view your balance<br>
+            vlb = view leaderboards<br>
+            vmatch = earn clues, fragments, and rank points<br>
+        </div>
         </div>
 
-        <div id="pg002" style="display: none;">WIP</div>
+
+        <div id="privacypage" class="page" style="height: 928px; width: 1670px; top: -1000px; left: 239px;">
+        <div style="text-align: center; font-size: 60px; text-shadow: 2px 2px 8px #b69ff5;">Privacy</div><br>
+        <div style="text-align: center; font-size: 30px; text-shadow: 2px 2px 8px #b69ff5;">Identity V info only collects data that it needs to function. <br> If people are using the economy some extra data will be collected so progress can be saved. <br> If you need data erased for any reason contact me via discord dm and i'll remove it. <br><br> I will add a command to let you erase it in the next economy update</div>
+        </div>
 
 
-        <div id="pg003" style="display: none;">
-            <h1>Identity V trivia</h1>
-            <div id="wl" style="font-size: 50px;">Correct: N/A</div><br>
-            <hr>
+        <div id="aboutpage" class="page" style="height: 928px; width: 1670px; top: -1000px; left: 239px;">
+        <div style="text-align: center; font-size: 60px; text-shadow: 2px 2px 8px #b69ff5;">About</div><br>
+        <div style="text-align: center; font-size: 30px; text-shadow: 2px 2px 8px #b69ff5;">
+            Idv info was originaly created in 2020 when i was still learning to code weve come a long way<br><br>
+        </div>
+        </div>
+
+
+        <div id="patchpage" class="page" style="height: 928px; width: 1670px; top: -10000px; left: 239px;">
+        <div style="text-align: center; font-size: 60px; text-shadow: 2px 2px 8px #b69ff5;">Patch</div><br>
+        <div class="invsscroll" style="text-align: center; font-size: 30px; text-shadow: 2px 2px 8px #b69ff5; overflow-y: scroll; overflow-x: hidden; height: 800px;">
             <br>
-            <div id="question" style="font-size: 33px;">Question</div><br>
-            <div id="cat" style="font-size: 33px;">Category</div><br>
-            <button id="an01" onclick="{ans01()}" class="button" style="position:relative; height: fit-content; background-color: rgb(129, 15, 139);">Answer01</button>
-            <button id="an02" onclick="{ans02()}" class="button" style="position:relative; height: fit-content; background-color: rgb(129, 15, 139);">Answer02</button>
-            <button id="an03" onclick="{ans03()}" class="button" style="position:relative; height: fit-content; background-color: rgb(129, 15, 139);">Answer03</button>
+            Version 0.0.4<br>
+            -Changed most commands to slash commands instead of prefix<br>
+            -Fixed version to be consistent between the bot and webpage<br>
+            -Optimized code (Around 2k useless lines removed)<br>
+            -Created a better info system (Only available on some characters rn)<br>
+            -Created commands for map info<br>
+            -Fixed a storing problem on the webpage<br>
+            -Updated random info<br><br>
+            Version 0.0.3<br>
+            -Fixed purge command<br>
+            -Improved the economy earn command<br>
+            -Added fragments and echos to the economy<br>
+            -Improved the help nav<br>
+            -Created a trivia command<br>
+            -Removed skins and lore from the information embed for now<br><br>
+            Version 0.0.2<br>
+            -Merged all info commands together into one emebed<br>
+            -Created an economy system using clues<br>
+            -Created a command to track your balance<br>
+            -Created a command to check your balance<br>
+            -Created a command to earn clues<br>
+            -Finished adding all survivor and hunter skins and lore<br>
+            -Created a command to purge messages from a chat channel<br>
+            -Created a command to tell jokes<br>
+            -Listed the bot on top.gg<br><br>
+            Version 0.0.1<br>
+            -Created survivor and hunter info embeds<br>
+            -Created purge command<br>
+            -Started other commands for hunter and survivor skins and lore<br>
+            -Created a help command<br>
+            
+        </div>
         </div>
 
-        <div id="pg004" style="display: none;">
-            <h2>TTS</h2>
-    
-    <input onblur="{cng()}" type=text id="myText01" value="Change me" placeholder="Text to read"><br><br>
 
-    <details>
-        <summary>Extra options</summary>
+        <div id="morepage" class="page" style="height: 928px; width: 1670px; top: -1000px; left: 239px;">
+            <div style="text-align: center; font-size: 60px; text-shadow: 2px 2px 8px #b69ff5;">More</div><br>
+            <div style="text-align: center; font-size: 30px; text-shadow: 2px 2px 8px #b69ff5;">
+                I have a few more pages you can check out they are all still a work in progress though<br><br>
+                <a href="slimejump.html" target="_blank">Play slime jump</a><br>
+                <a href="vote.html">Vote on character placements</a><br>
+                <a href="trivia.html">Idv trivia</a><br>
+                <a href="gen.html">Generate random stuff</a><br>
+                <a href="tts.html">Text to speach</a>
+            </div>
+            </div>
 
-        <input type=text id="myText02" value="" placeholder="Pitch">
-        <input type=text id="myText03" value="" placeholder="Rate">
-        <input type=text id="myText04" value="" placeholder="Volume">
-    </details>
-    
-    <br><br>
-
-    <select id="sel01">
-        <option value="a">US English Female</option> 
-        <option value="b">US English Male</option> 
-        <option value="c">UK English Female</option> 
-        <option value="d">UK English Male</option> 
-    </select>
-
-    <br><br>
-    
-    <div id="google_translate_element">Placeholder</div>
-
-    <br>
-
-    <button class="button" style="background-color: rgba(35, 26, 129, 0.582); position:relative;" onclick="{spk()}">Read</button>
+        <!--Warnings-->
+        <div id="Wbuilding" class="warning" style="height: 700px; width: 500px; top: -1000px; left: 800px;">
+        <div style="font-size: 45px;">This page is still under construction</div><br>
+        <div style="font-size: 20px;">I will get more features working soon untill then check out some of the other pages</div><br>
+        <button class="button" onclick="{cls()}" style="background-color: red; position:sticky; border-radius: 10%;">Close</button>
         </div>
-        <div id="pg005" style="display: none;">
-            <table style="font-size: 30px; user-select: none; margin-top: 50px;">
-                <caption>Identity V bingo</caption>
-                <tr>
-                    <td id="card_1" width="15px" style="padding: 10px; text-align:center; background-color: rgba(20, 14, 82, 0.582); cursor: pointer;" onclick="if(document.getElementById('card_1').style.backgroundColor === 'green') {document.getElementById('card_1').style.backgroundColor = 'rgba(20, 14, 82, 0.582)'} else {document.getElementById('card_1').style.backgroundColor = 'green'}">zz</td>
-                    <td id="card_2" width="15px" style="padding: 10px; text-align:center; background-color: rgba(20, 14, 82, 0.582); cursor: pointer;" onclick="if(document.getElementById('card_2').style.backgroundColor === 'green') {document.getElementById('card_2').style.backgroundColor = 'rgba(20, 14, 82, 0.582)'} else {document.getElementById('card_2').style.backgroundColor = 'green'}">zz</td>
-                    <td id="card_3" width="15px" style="padding: 10px; text-align:center; background-color: rgba(20, 14, 82, 0.582); cursor: pointer;" onclick="if(document.getElementById('card_3').style.backgroundColor === 'green') {document.getElementById('card_3').style.backgroundColor = 'rgba(20, 14, 82, 0.582)'} else {document.getElementById('card_3').style.backgroundColor = 'green'}">zz</td>
-                    <td id="card_4" width="15px" style="padding: 10px; text-align:center; background-color: rgba(20, 14, 82, 0.582); cursor: pointer;" onclick="if(document.getElementById('card_4').style.backgroundColor === 'green') {document.getElementById('card_4').style.backgroundColor = 'rgba(20, 14, 82, 0.582)'} else {document.getElementById('card_4').style.backgroundColor = 'green'}">zz</td>
-                </tr>
-                <tr>
-                    <td id="card_5" style="padding: 10px; text-align:center; background-color: rgba(20, 14, 82, 0.582); cursor: pointer;" onclick="if(document.getElementById('card_5').style.backgroundColor === 'green') {document.getElementById('card_5').style.backgroundColor = 'rgba(20, 14, 82, 0.582)'} else {document.getElementById('card_5').style.backgroundColor = 'green'}">zz</td>
-                    <td id="card_6" style="padding: 10px; text-align:center; background-color: rgba(20, 14, 82, 0.582); cursor: pointer;" onclick="if(document.getElementById('card_6').style.backgroundColor === 'green') {document.getElementById('card_6').style.backgroundColor = 'rgba(20, 14, 82, 0.582)'} else {document.getElementById('card_6').style.backgroundColor = 'green'}">zz</td>
-                    <td id="card_7" style="padding: 10px; text-align:center; background-color: rgba(20, 14, 82, 0.582); cursor: pointer;" onclick="if(document.getElementById('card_7').style.backgroundColor === 'green') {document.getElementById('card_7').style.backgroundColor = 'rgba(20, 14, 82, 0.582)'} else {document.getElementById('card_7').style.backgroundColor = 'green'}">zz</td>
-                    <td id="card_8" style="padding: 10px; text-align:center; background-color: rgba(20, 14, 82, 0.582); cursor: pointer;" onclick="if(document.getElementById('card_8').style.backgroundColor === 'green') {document.getElementById('card_8').style.backgroundColor = 'rgba(20, 14, 82, 0.582)'} else {document.getElementById('card_8').style.backgroundColor = 'green'}">zz</td>
-                </tr>
-                <tr>
-                    <td id="card_9" style="padding: 10px; text-align:center; background-color: rgba(20, 14, 82, 0.582); cursor: pointer;" onclick="if(document.getElementById('card_9').style.backgroundColor === 'green') {document.getElementById('card_9').style.backgroundColor = 'rgba(20, 14, 82, 0.582)'} else {document.getElementById('card_9').style.backgroundColor = 'green'}">zz</td>
-                    <td id="card_10" style="padding: 10px; text-align:center; background-color: rgba(20, 14, 82, 0.582); cursor: pointer;" onclick="if(document.getElementById('card_10').style.backgroundColor === 'green') {document.getElementById('card_10').style.backgroundColor = 'rgba(20, 14, 82, 0.582)'} else {document.getElementById('card_10').style.backgroundColor = 'green'}">zz</td>
-                    <td id="card_11" style="padding: 10px; text-align:center; background-color: rgba(20, 14, 82, 0.582); cursor: pointer;" onclick="if(document.getElementById('card_11').style.backgroundColor === 'green') {document.getElementById('card_11').style.backgroundColor = 'rgba(20, 14, 82, 0.582)'} else {document.getElementById('card_11').style.backgroundColor = 'green'}">zz</td>
-                    <td id="card_12" style="padding: 10px; text-align:center; background-color: rgba(20, 14, 82, 0.582); cursor: pointer;" onclick="if(document.getElementById('card_12').style.backgroundColor === 'green') {document.getElementById('card_12').style.backgroundColor = 'rgba(20, 14, 82, 0.582)'} else {document.getElementById('card_12').style.backgroundColor = 'green'}">zz</td>
-                </tr>
-                <tr>
-                    <td id="card_13" style="padding: 10px; text-align:center; background-color: rgba(20, 14, 82, 0.582); cursor: pointer;" onclick="if(document.getElementById('card_13').style.backgroundColor === 'green') {document.getElementById('card_13').style.backgroundColor = 'rgba(20, 14, 82, 0.582)'} else {document.getElementById('card_13').style.backgroundColor = 'green'}">zz</td>
-                    <td id="card_14" style="padding: 10px; text-align:center; background-color: rgba(20, 14, 82, 0.582); cursor: pointer;" onclick="if(document.getElementById('card_14').style.backgroundColor === 'green') {document.getElementById('card_14').style.backgroundColor = 'rgba(20, 14, 82, 0.582)'} else {document.getElementById('card_14').style.backgroundColor = 'green'}">zz</td>
-                    <td id="card_15" style="padding: 10px; text-align:center; background-color: rgba(20, 14, 82, 0.582); cursor: pointer;" onclick="if(document.getElementById('card_15').style.backgroundColor === 'green') {document.getElementById('card_15').style.backgroundColor = 'rgba(20, 14, 82, 0.582)'} else {document.getElementById('card_15').style.backgroundColor = 'green'}">zz</td>
-                    <td id="card_16" style="padding: 10px; text-align:center; background-color: rgba(20, 14, 82, 0.582); cursor: pointer;" onclick="if(document.getElementById('card_16').style.backgroundColor === 'green') {document.getElementById('card_16').style.backgroundColor = 'rgba(20, 14, 82, 0.582)'} else {document.getElementById('card_16').style.backgroundColor = 'green'}">zz</td>
-                </tr>
-            </table>
-            <br><br>
-            <button style="background-color: rgba(35, 26, 129, 0.582); position:relative;" class="button" onclick="{scramble()}">Scramble</button>
-        </div>
-        <div id="pg006" style="display: none;">
-        <h1>Eggie is the best idv player in the world</h1>
-
-        <select id="sel02">
-            <option value="a">Essence 1</option> 
-            <option value="b" selected="">Essence 2</option> 
-            <option value="c">Essence 3</option> 
-            <option value="d">Essence 4</option> 
-        </select>
-
-        <br><br><br>
-
-        <img width="100px" height="100px" style="background-color: red;" src="" onclick="pull()"> <br><br>
-
-        <div id="skinstorage"></div>  <br><br>
-        <buttton onclick="test()">XX</buttton>
-    </div>
-    </center>
-    </div>
-</body>
+        
+    </body>
 </html>
