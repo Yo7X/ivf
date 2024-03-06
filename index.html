@@ -1,141 +1,272 @@
-<!doctype html>
+<!DOCTYPE html>
+<html lang="en">
 
-<html>
-    <head>
-        <meta charset="utf-8">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Identity V info</title>
+    <style>
+        body {
+            background: black;
+            color: white;
+            font-family: cursive;
+            font-size: 22px;
+            overflow: hidden;
+        }
 
-        <title>Index</title>
-        <link rel="stylesheet" href="main.css" type="text/css">
-        <script src="main.js"></script>
+        button {
+            width: 200px; 
+            height: 75px;
+            background: linear-gradient(60deg, rgb(118, 6, 166), rgb(73, 9, 95));
+            cursor: pointer;
+            border: 2px solid white;
+            font-size: 27px;
+            color: white;
+            margin: 15px;
+            text-shadow: 2px 2px 3px black;
 
-        <style>
-            body {
-                background-image: url("img/IVF pfp.png");
-                background-size: cover;
-            }
-        </style>
+            transition: width 1s ease-out, height 1s ease-out;
+        }
 
-    </head>
+        button:hover {
+            width: 250px;
+            height: 100px;
+            background: linear-gradient(60deg, rgb(143, 8, 200), rgb(111, 14, 143));
 
-    <body onload="{general()}">
-        <!--Side bar-->
-        <button onclick="{invite()}" class="button" style="height: 70px; width: 200px; background-color: rgba(20, 14, 82, 0.582); top: 15px; left: 15px;">Invite</button>
-        <button onclick="{general()}" id="sb01" class="button" style="height: 70px; width: 200px; background-color: rgba(20, 14, 82, 0.582); top: 105px; left: 15px;">General</button>
-        <button onclick="{commands()}" id="sb02" class="button" style="height: 70px; width: 200px; background-color: rgba(20, 14, 82, 0.582); top: 195px; left: 15px;">Commands</button>
-        <button onclick="{privacy()}" id="sb03" class="button" style="height: 70px; width: 200px; background-color: rgba(20, 14, 82, 0.582); top: 290px; left: 15px;">Privacy</button>
-        <button onclick="{x(); about()}" id="sb04" class="button" style="height: 70px; width: 200px; background-color: rgba(20, 14, 82, 0.582); top: 385px; left: 15px;">About</button>
-        <button onclick="{patch()}" id="sb05" class="button" style="height: 70px; width: 200px; background-color: rgba(20, 14, 82, 0.582); top: 480px; left: 15px; font-size: 30px;">Patch notes</button>
-        <button onclick="{more()}" id="sb06" class="button" style="height: 70px; width: 200px; background-color: rgba(20, 14, 82, 0.582); top: 575px; left: 15px;">More</button>
+            transition: width 0.2s ease-out, height 0.2s ease-out;
+        }
 
-        <!--Background -->
-        <div class="deco" style="height: 1000px; width: 235px; background-color: rgba(117, 62, 189, 0.774); top: 0px; left: 0px; border: 2px solid white;"></div>
-        <div class="deco" style="height: 1000px; width: 2000px; background-color: rgba(20, 14, 82, 0.911); top: 0px; left: 240px;"></div>
+        .page {
+            display: none;
+            font-size: 22px;
+            overflow-y: scroll;
+        }
 
-        <!--Pages-->
-        <div id="generalpage" class="page" style="height: 928px; width: 1670px; top: -1000px; left: 239px;">
-        <div style="text-align: center; font-size: 60px; text-shadow: 2px 2px 8px #b69ff5;">General</div>
-        <div style="text-align: center; font-size: 30px; text-shadow: 2px 2px 8px #b69ff5;">
-            Identity V info is a discord bot developed by Yo7 that makes it easy <br> to always have idv facts at your fingertips. The bot also has some other features 
-            that <br> make it a great addition to any Identity V theemed discord server. 
+        .displayed {
+            display: block;
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+        <div id="leftSide" style="position: absolute; width: 10px; height: 10px; top: 0px; left: 0px; background: linear-gradient(rgba(92, 11, 233, 0.607), rgba(143, 7, 211, 0.607)); border-right: 15px solid rgba(255, 255, 255, 0.707); z-index: 1;">
+            <center>
+                <h1>Options</h1>
+                <button onclick="changePage(home)">Home</button> <br>
+                <button onclick="changePage(privacyPolicy)">Privacy policy</button><br>
+                <button onclick="changePage(tos)">Terms of service</button><br>
+                <button onclick="changePage(cmds)">Commands</button><br>
+            </center>
         </div>
-        </div>
-
-
-        <div id="commandspage" class="page" style="height: 928px; width: 1670px; top: -1000px; left: 239px;">
-        <div style="text-align: center; font-size: 60px; text-shadow: 2px 2px 8px #b69ff5;">Commands</div><br>
-        <div class="invsscroll" style="text-align: center; font-size: 30px; text-shadow: 2px 2px 8px #b69ff5; overflow-y: scroll; overflow-x: hidden; height: 800px;">
-            vjoke = A random (mostly idv themed) joke<br>
-
-            /skill (character) = That characters full list of abilities<br>
-            /skin (character) = That characters full list of skins<br>
-            /lore (character) = That characters full lore<br>
-            /hunter-list = list of all hunters<br>
-            /survivor-list = list of all survivors<br>
-            /random-survivor = one random survivor<br>
-            /random-hunter = one random hunter<br><br>
-        </div>
-        </div>
-
-
-        <div id="privacypage" class="page" style="height: 928px; width: 1670px; top: -1000px; left: 239px;">
-        <div style="text-align: center; font-size: 60px; text-shadow: 2px 2px 8px #b69ff5;">Privacy</div><br>
-        <div style="text-align: center; font-size: 30px; text-shadow: 2px 2px 8px #b69ff5;">
-            Identity V info temporarily looks and things like your discord id and user name <br> no data is permanently stored anywhere.
-        </div>
-        </div>
-
-
-        <div id="aboutpage" class="page" style="height: 928px; width: 1670px; top: -1000px; left: 239px;">
-        <div style="text-align: center; font-size: 60px; text-shadow: 2px 2px 8px #b69ff5;">About</div><br>
-        <div style="text-align: center; font-size: 30px; text-shadow: 2px 2px 8px #b69ff5;">
-            Idv info was originaly created in 2020 when i was still learning to code weve come a long way<br><br>
-        </div>
-        </div>
-
-
-        <div id="patchpage" class="page" style="height: 928px; width: 1670px; top: -10000px; left: 239px;">
-        <div style="text-align: center; font-size: 60px; text-shadow: 2px 2px 8px #b69ff5;">Patch</div><br>
-        <div class="invsscroll" style="text-align: center; font-size: 30px; text-shadow: 2px 2px 8px #b69ff5; overflow-y: scroll; overflow-x: hidden; height: 800px;">
-            <br>
-            Version 0.0.5<br>
-            -Changed most commands to slash commands instead of prefix<br>
-            -Removed most of the old info system<br>
-            -Added random hunter and survivor commands<br>
-            -Fixed info grab bug<br>
-            -Updated character skills<br>
-            -Updated character lists<br>
-            -Moved the economy to another bot because it was to request intensive<br>
-            -Updated web page to look more clean<br><br>
-            Version 0.0.4<br>
-            -Changed most commands to slash commands instead of prefix<br>
-            -Fixed version to be consistent between the bot and webpage<br>
-            -Optimized code (Around 2k useless lines removed)<br>
-            -Created a better info system (Only available on some characters rn)<br>
-            -Created commands for map info<br>
-            -Fixed a storing problem on the webpage<br>
-            -Updated random info<br><br>
-            Version 0.0.3<br>
-            -Fixed purge command<br>
-            -Improved the economy earn command<br>
-            -Added fragments and echos to the economy<br>
-            -Improved the help nav<br>
-            -Created a trivia command<br>
-            -Removed skins and lore from the information embed for now<br><br>
-            Version 0.0.2<br>
-            -Merged all info commands together into one emebed<br>
-            -Created an economy system using clues<br>
-            -Created a command to track your balance<br>
-            -Created a command to check your balance<br>
-            -Created a command to earn clues<br>
-            -Finished adding all survivor and hunter skins and lore<br>
-            -Created a command to purge messages from a chat channel<br>
-            -Created a command to tell jokes<br>
-            -Listed the bot on top.gg<br><br>
-            Version 0.0.1<br>
-            -Created survivor and hunter info embeds<br>
-            -Created purge command<br>
-            -Started other commands for hunter and survivor skins and lore<br>
-            -Created a help command<br>
-            
-        </div>
-        </div>
-
-
-        <div id="morepage" class="page" style="height: 928px; width: 1670px; top: -1000px; left: 239px;">
-            <div style="text-align: center; font-size: 60px; text-shadow: 2px 2px 8px #b69ff5;">More</div><br>
-            <div style="text-align: center; font-size: 30px; text-shadow: 2px 2px 8px #b69ff5;">
-                Links to my other projects <br> <br>
-                <a href="https://www.youtube.com/channel/UCnHHxFU-nYnuKMC7TKnhXqA" target="_blank">YouTube</a><br>
-                <a href="https://yo7x.github.io/IDV-T/Identity%20V%20tools/Index.html" target="_blank">Identity V tools</a>
-            </div>
+        <div id="rightSide" style="position: absolute; width: 10px; height: 10px; top: 0px; left: 0px; background: linear-gradient(rgba(60, 0, 163, 0.607), rgba(73, 0, 109, 0.607));">
+            <div id="home" class="page displayed">
+                <center>
+                    <h1>Identity V info</h1>
+                    <h3>Developed by yo7</h3>
+                    <button>Invite</button><br>
+                </center>
             </div>
 
-        <!--Warnings-->
-        <div id="Wbuilding" class="warning" style="height: 700px; width: 500px; top: -1000px; left: 800px;">
-        <div style="font-size: 45px;">This page is still under construction</div><br>
-        <div style="font-size: 20px;">I will get more features working soon untill then check out some of the other pages</div><br>
-        <button class="button" onclick="{cls()}" style="background-color: red; position:sticky; border-radius: 10%;">Close</button>
+            <div id="privacyPolicy" class="page">
+                <center>
+                    <h1>Privacy</h1>
+                </center>
+                <p style="padding: 5%;">
+                    The team behind Identity V info is strongly committed to protecting the privacy of its users. This Privacy Policy
+                    outlines the types of personal information collected by the bot and how that information is used. <br> <br> <br>
+                    
+                    
+                    <b style="font-size: 20px;">1. Information Collected</b> <br>
+                    a) User Data: Identity V info may collect user data necessary for its functionality, including but not limited
+                    to user IDs, guild member count, guild IDs, and message content.
+                    <br><br>
+                    b) Usage Information: The bot may collect information about how users interact with its features, such as command usage
+                    and preferences.
+
+                    <br> <br> <br>
+
+                    <b style="font-size: 20px;">2. Use of Information</b> <br>
+                    a) User data collected by Identity V info is used solely for the purpose of providing its services, including but
+                    not limited to executing commands and delivering responses within Discord servers.
+                    <br> <br>
+                    b) Improvement of Services: Usage information may be used to improve the functionality and performance of the bot, as
+                    well as to develop new features based on user feedback.
+
+                    <br><br><br>
+
+                    <b style="font-size: 20px;">3. Use Data Sharing</b><br>
+                    a) Third-Party Services: The developers of Identity V info do not share user data with third-party services or APIs for
+                    any purpose other than the operation of the bot itself. User data is only shared with third-party services to the extent
+                    necessary to provide the bot's functionality within Discord servers.
+                    <br><br>
+                    b) No Selling of user Data: The developers of Identtiy V info will <u>never</u> under any circumstances
+                    sell, rent, or share user data with third parties for marketing or advertising purposes.
+                    <br><br>
+                    c) Legal Compliance: User data may be disclosed if required to do so by law or in response to valid legal requests, such
+                    as court orders or subpoenas.
+
+                    <br><br><br>
+
+                    <b style="font-size: 20px;">4. Consent</b><br>
+                    By using Identity V info, users consent to the collection and use of their personal information as outlined in
+                    this Privacy Policy.
+
+                    <br><br><br>
+
+                    <b style="font-size: 20px;">5. Deletion of data</b><br>
+                    a) Retention Period: Identity V info will retain user data only for as long as it is necessary to fulfill the
+                    purposes outlined in this Privacy Policy, unless a longer retention period is required by law.
+                    <br>
+                    b)User Control: Users have the right to request the deletion of any stored personal information collected by Identity V
+                    info. Such requests can be made within Discord itself by useing the <b>/destroy-data</b> command or by contacting the
+                    developers via email.
+
+                    <br><br><br>
+
+                    <b style="font-size: 20px;">6. Changes to the Privacy Policy</b><br>
+                    The developers of Identity V info reserve the right to update or modify this Privacy Policy at any time with or without
+                    notice.
+
+                    <br><br><br>
+
+                    <b style="font-size: 20px;">7. Contact Information</b><br>
+                    For questions or concerns regarding this Privacy Policy, please contact <u>yo7.videos@gmail.com</u>.
+                </p>
+            </div>
+
+            <div id="tos" class="page">
+                <center>
+                    <h1>Terms of service</h1>
+                </center>
+                <p style="padding: 5%;">
+                    <b style="font-size: 20px;">1. Use of our Bot</b><br>
+                    Identity V info is a bot developed for Discord. By inviting the bot to your guild ("server"),
+                    you agree to abide by Discord's Terms of Service as well as the rules outlined in this document.
+                    
+                    <br><br><br>
+                    
+                    <b style="font-size: 20px;">2. Bot Functionality</b><br>
+                    Identity V info is provided as-is, without any warranties or guarantees of performance or
+                    reliability. The developers of the bot reserve the right to modify or discontinue the bot's services at any time without
+                    prior notice.
+
+                    <br><br><br>
+                    
+                    <b style="font-size: 20px;">3. Data Privacy</b><br>
+                    Identity V info may collect and store user data as necessary for its functionality. This data
+                    will not be shared with third parties unless required by law or with the user's consent.
+
+                    <br><br><br>
+                    
+                    <b style="font-size: 20px;">4. Bot Commands</b><br>
+                    Users are responsible for the actions performed using Identity V info commands. The developers
+                    of the bot are not liable for any misuse or abuse of its features.
+                    
+                    <br><br><br>
+                    
+                    <b style="font-size: 20px;">5. Changes to the Terms</b><br>
+                    The developers of Identity V info reserve the right to update or modify these terms at
+                    any time.
+                    
+                    <br><br><br>
+                    
+                    <b style="font-size: 20px;">6. Termination of Service</b><br>
+                    The developers of Identity V info reserve the right to terminate service to any user
+                    or guild found to be in violation of these terms.
+                    
+                    <br><br><br>
+                    
+                    <b style="font-size: 20px;">7. Contact Information</b><br>
+                    For questions or concerns regarding these terms, please contact yo7.videos@gmail.com.
+                    
+                    <br><br><br>
+                    
+                    <b style="font-size: 20px;">9. Intellectual Property</b><br>
+                    a) All original content, including code, graphics, and documentation developed by the creators of Identity V info,
+                    remains the exclusive property of the bot's developers.
+
+                    <br><br>
+                    
+                    b) The use of assets from Identity V in Identity V info is for illustrative purposes only and does not
+                    imply ownership of said assets. All rights to the original game assets belong to their respective owners.
+
+                    <br><br>
+                    
+                    c) Users may not modify, distribute, or reproduce any copyrighted material used in Identity V info without
+                    explicit permission from the owners of the original assets.
+
+                    <br><br><br>
+                    
+                    
+                    10. <b style="font-size: 20px;">Indemnification</b><br>
+                    Users agree to indemnify and hold harmless the developers of Identity V info from any
+                    claims, damages, losses, liabilities, and expenses (including attorneys' fees) arising out of or related to the user's
+                    violation of these terms or use of the bot.
+
+                    <br><br><br>
+                    
+                    
+                    11. <b style="font-size: 20px;">Severability</b><br>
+                    If any provision of these terms is found to be invalid or unenforceable, the remaining provisions
+                    shall remain in full force and effect.
+                    
+                    <br><br><br><br>
+                    
+                    By using Identity V info, you acknowledge that you have read and understood these terms and agree to comply
+                    with them.
+                </p>
+                
+            </div>
+
+            <div id="cmds" class="page">
+                <center>
+                    <h1>Commands</h1>
+                </center>
+                <p style="padding: 5%;">
+                    /help = command list, change log, how to format commands<br>
+                    /joke = A random (mostly idv themed) joke<br>
+                    /skill (character) = That characters full list of abilities<br>
+                    /hunter-list = list of all hunters<br>
+                    /survivor-list = list of all survivors<br>
+                    /random-survivor = one random survivor<br>
+                    /random-hunter = one random hunter<br>
+                    /map = draw a map from the game with multiple configurations<br>
+                    /echoes-to-usd = convert echoes to us dollars (subject to error)<br>
+                    /ship = ship two random characters <br>
+                    /server-time = show the current NA/EU server time <br>
+                    /toss-coin = flip a coin <br>
+                    /find-friend_get = find a player looking to team up <br>
+                    /find-friend_send = send id, ign, tier, etc to be pulled with find-friend_get <br>
+                    /distroy-data = remove any and all data stored about you <br>
+                    /vote = vote for chracter placements on the identity V tools tier list <br>
+                </p>
+            </div>
         </div>
-        
-    </body>
+    </div>
+</body>
+
+<script>
+    winy = window.innerHeight
+    winx = window.innerWidth
+
+    document.getElementById('rightSide').style.left = winx / 6 + 'px'
+    document.getElementById('rightSide').style.width = winx - winx / 6 + 'px'
+    document.getElementById('rightSide').style.height = winy + 'px'
+
+    document.getElementById('leftSide').style.width = winx / 6 + 'px'
+    document.getElementById('leftSide').style.height = winy + 'px'
+
+    document.querySelectorAll(".page").forEach((page) => {
+        page.style.height = winy + 'px'
+        })
+
+    function changePage(page) {
+        document.querySelectorAll(".page").forEach((page) => {
+            page.classList.remove("displayed")
+        })
+        page.classList.add('displayed')
+    }
+</script>
+
 </html>
