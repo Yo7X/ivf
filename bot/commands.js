@@ -1,5 +1,5 @@
 require('dotenv').config();
-const token = process.env.TOKEN02;
+const token = process.env.TOKEN;
 
 const { REST } = require('@discordjs/rest');
 const { Routes } = require('discord-api-types/v9');
